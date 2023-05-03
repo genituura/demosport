@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace sport
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWin.xaml
-    /// </summary>
     public partial class MainWin : Window
     {
         public MainWin()
@@ -26,11 +23,15 @@ namespace sport
             {
                 ProductGrid.ItemsSource = db.Products.ToList();
             }
+
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+            ProductGrid.Columns[0].Width = 140;
+            ProductGrid.Columns[4].Width = 200;
         }
 
         private void ProductGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
         }
 
         private void ProductGrid_Selected(object sender, RoutedEventArgs e)
@@ -43,6 +44,86 @@ namespace sport
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.Where(x => x.ProductDiscountAmount < 10).ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+        }
+
+        private void ComboBoxItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.Where(x => x.ProductDiscountAmount > 10 && x.ProductDiscountAmount < 15).ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
+        }
+
+        private void ComboBoxItem_Selected_2(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.Where(x => x.ProductDiscountAmount > 15 && x.ProductDiscountAmount < 100).ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
+        }
+
+        private void ComboBoxItem_Selected_3(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
+        }
+
+        private void ComboBoxItem_Selected_4(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.OrderBy(x => x.ProductCost).ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
+        }
+
+        private void ComboBoxItem_Selected_5(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.OrderByDescending(x => x.ProductCost).ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
+        }
+
+        private void ComboBoxItem_Selected_6(object sender, RoutedEventArgs e)
+        {
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
+        }
+
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            using (var db = new SportikContext())
+            {
+                ProductGrid.ItemsSource = db.Products.Where(x => x.ProductName == Search.Text).ToList();
+            }
+            count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
+
         }
     }
 }
