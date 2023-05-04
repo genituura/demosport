@@ -46,6 +46,9 @@ namespace sport
             if (sport.Users.Any(i => i.UserLogin == Login.Text && i.UserPassword == Password.Text && i.RoleId == 2))
             {
                 MessageBox.Show("Успешная авторизация администратора");
+                AddTovar add = new AddTovar();
+                add.ShowDialog();
+                this.Hide();
             }
 
             if (sport.Users.Any(i => i.UserLogin == Login.Text && i.UserPassword == Password.Text && i.RoleId == 3))
