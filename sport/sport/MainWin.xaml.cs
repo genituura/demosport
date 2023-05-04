@@ -125,5 +125,17 @@ namespace sport
             count.Content = "Найдено" + ProductGrid.Items.Count.ToString();
 
         }
+
+        private void Add_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddTovar_Click(object sender, RoutedEventArgs e)
+        {
+            AddTovar tovar = new AddTovar();
+            tovar.Show();
+            this.Close();
+        }
     }
 }

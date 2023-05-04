@@ -31,6 +31,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Add" Content="Назад" Height="30" Width="80" Grid.Row="3" Background="#FF498C52" Click="Add_Click" Margin="389,10,531,10"  ></Button>
+        <Button x:Name="AddTovar" Content="Добавить товар" Height="30" Width="150" Grid.Row="3" Background="#FF498C52" Margin="52,9,798,11" Click="AddTovar_Click"></Button>
         <Label Content="Поиск:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
         <TextBox x:Name="Search" TextChanged="Search_TextChanged" Grid.Column="0" VerticalAlignment="Center" Margin="52,0,700,0" Grid.Row="1" Height="26" RenderTransformOrigin="0.5,0.5" Width="NaN"/>
         <Label Content="Фильтрация по цене:" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="305,10,0,0" />
